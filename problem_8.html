@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Gallery Component with Children</title>
+    <style>
+      /* Styling for the grid layout */
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+        gap: 10px;
+      }
+      .gallery img {
+        width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+ 
+      function Gallery({ children }) {
+        return <div className="gallery">{children}</div>;
+      }
+
+     
+      function Image({ src, alt }) {
+        return <img src={src} alt={alt} />;
+      }
+
+    
+      ReactDOM.render(
+        <Gallery>
+          <Image src="https://img.freepik.com/premium-photo/cute-birds_729089-352.jpg?w=360" alt="Image 1" />
+          <Image src="https://img.freepik.com/premium-photo/three-cute-birds-perched-cherry-blossom-tree-branch-spring-illustration_691560-7858.jpg" alt="Image 2" />
+          <Image src="https://i.etsystatic.com/27578520/r/il/b347ab/4477751760/il_fullxfull.4477751760_sr5r.jpg" alt="Image 3" />
+          <Image src="https://img.freepik.com/premium-photo/cute-bird-3d-hyper-realistic-animated-bird_959621-9.jpg" alt="Image 4" />
+        </Gallery>,
+        document.getElementById('root')
+      );
+    </script>
+  </body>
+</html>

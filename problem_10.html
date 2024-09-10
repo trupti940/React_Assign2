@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>React Pricing Plan</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+    const PlanCard = (props) => {
+      const { planName, price, buttonText, features } = props;
+
+      return (
+        <div style={{
+          borderTop: '1px solid #ddd', 
+          padding: '20px 40px',
+          display: 'flex', 
+          justifyContent: 'space-between', 
+          alignItems: 'center'
+        }}>
+          <div>
+            <h2 style={{ fontSize: '24px', margin: 0 }}>{planName}</h2>
+            <ul style={{ listStyle: 'none', paddingLeft: '0', color: '#555' }}>
+              {features.map((feature, index) => (
+                <li key={index} style={{ margin: '5px 0' }}>
+                  <span style={{ color: 'green', marginRight: '10px' }}>✔</span>{feature}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div style={{ textAlign: 'right' }}>
+            <h2 style={{ fontSize: '32px', margin: '0' }}>{price}</h2>
+            <button style={{
+              padding: '10px 20px', 
+              backgroundColor: '#d1c4e9', 
+              border: 'none', 
+              color: '#fff', 
+              borderRadius: '5px',
+              cursor: 'pointer',
+              fontWeight: 'bold'
+            }}>{buttonText}</button>
+          </div>
+        </div>
+      );
+    };
+
+    const PricingTable = () => {
+      return (
+        <div style={{ maxWidth: '800px', margin: '50px auto', textAlign: 'center' }}>
+          <h1 style={{ fontSize: '36px', fontWeight: 'bold' }}>The Right Plan for <span style={{ color: '#b39ddb' }}>Your Business</span></h1>
+          <p style={{ color: '#555' }}>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam quod in iure vero. Facilis magnam, sed officiis commodi labore odit.</p>
+
+          <div style={{
+            borderTop: '1px solid #ddd', 
+            borderBottom: '1px solid #ddd', 
+            marginTop: '30px',
+            paddingTop: '10px'
+          }}>
+            <PlanCard
+              planName="Starter"
+              price="Free"
+              buttonText="Get Started"
+              features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+            />
+            <PlanCard
+              planName="Lorem Plus"
+              price="$32.00"
+              buttonText="Get Started"
+              features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+            />
+            <PlanCard
+              planName="Lorem Pro"
+              price="$50.00"
+              buttonText="Get Started"
+              features={["1 lorem ipsum", "Lorem, ipsum dolor.", "Monthly Updates"]}
+            />
+          </div>
+        </div>
+      );
+    };
+
+    ReactDOM.render(<PricingTable />, document.getElementById('root'));
+  </script>
+</body>
+</html>

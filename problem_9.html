@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Components in React</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+    }
+    .step-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+    .step-box {
+      background-color: #f0f5f9;
+      padding: 20px;
+      border-radius: 10px;
+      width: 200px;
+      text-align: center;
+    }
+    .step-box h3 {
+      background-color: #ccf1d6;
+      display: inline-block;
+      padding: 10px;
+      border-radius: 50%;
+      margin-bottom: 10px;
+      font-size: 24px;
+    }
+    .highlight {
+      background-color: #ccf1d6;
+      padding: 2px 5px;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+  <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <script type="text/babel">
+
+    function StepComponent({ number, title, description }) {
+      return (
+        <div className="step-box">
+          <h3>{number}</h3>
+          <h2>{title}</h2>
+          <p>{description}</p>
+        </div>
+      );
+    }
+
+   
+    function StepsContainer() {
+      return (
+        <div className="step-container">
+          <StepComponent
+            number="01"
+            title="Find your template"
+            description="Every template is embedded within an iframe, so you can easily check what they look like and test the responsive behavior."
+          />
+          <StepComponent
+            number="02"
+            title="Copy the code"
+            description="Click the code tab to see the actual source code of the template. Copy and paste it into your project and adjust it to your needs."
+          />
+          <StepComponent
+            number="03"
+            title="Enjoy your free time"
+            description="You've just saved yourself a bunch of time not building the same stuff over and over again. Enjoy your free time and build business features."
+          />
+        </div>
+      );
+    }
+
+   
+    function MainComponent() {
+      return (
+        <div>
+          <h1>Getting started in <span className="highlight">3 easy steps</span></h1>
+          <StepsContainer />
+        </div>
+      );
+    }
+
+ 
+    ReactDOM.render(<MainComponent />, document.getElementById('root'));
+  </script>
+</body>
+</html>
